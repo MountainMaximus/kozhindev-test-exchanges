@@ -5,9 +5,9 @@ import { ExchangeField } from "./ExchangeField";
 export const ExchangeForm: React.FC = ({}) => {
   const [quantityFields, setQuantityFields] = React.useState(2);
   /**Добавление поля для конвертации */
-  const addField = () => {
+  const addField = React.useCallback(() => {
     if (quantityFields <= 9) setQuantityFields((prev) => prev + 1);
-  };
+  }, []);
 
   return (
     <div style={{ width: 800, margin: "20px auto" }}>

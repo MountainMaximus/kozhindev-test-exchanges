@@ -1,8 +1,7 @@
 import * as React from "react";
-import Field from "@steroidsjs/core/ui/form/Field";
 
 import "./IndexPage.scss";
-import { useBem, useDispatch } from "@steroidsjs/core/hooks";
+import { useBem } from "@steroidsjs/core/hooks";
 
 import { Header } from "./views/Header";
 import { QuotationTable } from "./views/QuotationTable";

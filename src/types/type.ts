@@ -1,21 +1,3 @@
-export interface ExchangeState {
-  currency: ISO;
-  amount: number;
-}
-export interface pailoadExchange {
-  currency: ISO;
-  amount: number;
-}
-export interface currenciesInitialState {
-  rates: { [index: string]: number };
-  status: Status;
-}
-export interface AxiosAnswer {
-  date: string;
-  base: string;
-  rates: { [index: string]: number };
-}
-
 export const COLL = {
   NUM: "Номер строки",
   ISO: "Код валюты",
@@ -54,4 +36,30 @@ export enum ISO {
   IDR = "Индонезийская рупия",
   JPY = "Японская йена",
   CNY = "Китайский юань",
+}
+
+export interface ExchangeState {
+  currency: ISO;
+  amount: number;
+}
+export interface FilterState {
+  searchValue: string;
+  column: string;
+  direction: 1 | -1;
+  countRow: number;
+}
+export interface currenciesInitialState {
+  rates: { [index: string]: number };
+  status: Status;
+}
+
+export interface pailoadExchange {
+  currency: ISO;
+  amount: number;
+}
+
+export interface AxiosAnswer {
+  date: string;
+  base: string;
+  rates: { [index: string]: number };
 }

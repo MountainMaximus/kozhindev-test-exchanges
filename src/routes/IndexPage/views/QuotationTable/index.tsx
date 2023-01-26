@@ -111,9 +111,9 @@ export const QuotationTable: React.FC = () => {
                 <td>{key}</td>
                 <td>{ISO[key]}</td>
                 <td>{rates[key]}</td>
-                <td>{rates[key] * rates["USD"]}</td>
-                <td>{rates[key] * rates["EUR"]}</td>
-                <td>{rates[key] * rates["CNY"]}</td>
+                <td>{rates[key] / rates["USD"]}</td>
+                <td>{rates[key] / rates["EUR"]}</td>
+                <td>{rates[key] / rates["CNY"]}</td>
               </tr>
             ))}
         </tbody>

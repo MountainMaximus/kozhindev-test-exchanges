@@ -3,19 +3,14 @@ import React from "react";
 import { fetchRates } from "../../../../actions/currencies";
 import Button from "@steroidsjs/core/ui/form/Button/Button";
 import Head from "@steroidsjs/core/ui/layout/Header";
+import { TimeField } from "./TimeField";
 
 export const Header: React.FC = () => {
-  const [date, setDate] = React.useState("");
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    const date = new Date();
-    setDate(date.toLocaleTimeString());
-  }, []);
+
   /**Обработчик запроса актуальных котировок */
   const onClickUpdate = () => {
     dispatch(fetchRates());
-    const date = new Date();
-    setDate(date.toLocaleTimeString());
   };
 
   return (
@@ -26,7 +21,7 @@ export const Header: React.FC = () => {
     >
       <div>
         Время последнего обновления курсов:
-        <span>{date}</span>
+        <TimeField />
       </div>
 
       <Button onClick={onClickUpdate} size={"md"} className="ml-4">
