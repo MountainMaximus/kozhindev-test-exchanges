@@ -13,7 +13,8 @@ import currenciesReducer from "./currencies";
 import exchangerReducer from "./exchanger";
 
 const customReducers = combineReducers({
-  currenciesReducer,
+  currencies: currenciesReducer,
+  exchanger: exchangerReducer,
 });
 
 export default (asyncReducers) =>
@@ -27,6 +28,7 @@ export default (asyncReducers) =>
     screen,
     currencies: currenciesReducer,
     exchanger: exchangerReducer,
+
     ...asyncReducers,
     router: (state, action) =>
       router(
@@ -36,3 +38,4 @@ export default (asyncReducers) =>
   });
 
 export type RootState = ReturnType<typeof customReducers>;
+export const getStore = (state: RootState) => state;

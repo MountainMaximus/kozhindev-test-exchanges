@@ -3,19 +3,19 @@ import Field from "@steroidsjs/core/ui/form/Field";
 
 import "./IndexPage.scss";
 import { useBem, useDispatch } from "@steroidsjs/core/hooks";
-import { fetchRates } from "actions/currencies";
+
+import { Header } from "./views/Header";
+import { QuotationTable } from "./views/QuotationTable";
+import { ExchangeForm } from "./views/ExchangeForm";
 
 export default function IndexPage() {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchRates());
-  }, []);
   const bem = useBem("IndexPage");
 
   return (
     <div className={bem.block()}>
-      Hello ;)
-      <Field attribute="field" label="Basic" />
+      <Header />
+      <QuotationTable />
+      <ExchangeForm />
     </div>
   );
 }

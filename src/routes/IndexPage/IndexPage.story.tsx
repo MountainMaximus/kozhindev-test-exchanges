@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import IndexPage from './IndexPage';
+import IndexPage from "./IndexPage";
 
 export default {
-    title: 'IndexPage',
+  title: "IndexPage",
 };
 
-export const IndexPageDemo = () => (
-    <IndexPage />
-);
+export const IndexPageDemo = () => <IndexPage />;

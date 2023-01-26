@@ -1,6 +1,7 @@
 import { SET_STATUS, SET_RATES } from "../actions/currencies";
 
 import { currenciesInitialState, ISO, Status } from "../types/type";
+import { RootState } from "./store";
 
 const initialState: currenciesInitialState = {
   rates: {},
@@ -25,7 +26,7 @@ export default (state = initialState, action) => {
         ...state,
         status: Status.SUCCESS,
 
-        rates: ISOFilter,
+        rates: { RUB: 1, ...ISOFilter },
       };
     }
 
@@ -33,3 +34,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export const getRates = (state: RootState) => state.currencies;
