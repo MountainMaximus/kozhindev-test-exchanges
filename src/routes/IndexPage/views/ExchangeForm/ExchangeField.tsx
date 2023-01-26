@@ -1,12 +1,13 @@
-import { useDispatch } from "@steroidsjs/core/hooks";
+import { useBem, useDispatch } from "@steroidsjs/core/hooks";
 import { setExchangeParameters } from "actions/exchanger";
 import React from "react";
 import { getStore } from "reducers/store";
 import { ISO, pailoadExchange } from "types/type";
 import { useSelector } from "@steroidsjs/core/hooks";
 import Button from "@steroidsjs/core/ui/form/Button/Button";
-
+import "./ExchangeForm.scss";
 export const ExchangeField: React.FC = ({}) => {
+  const bem = useBem("ExchangeField");
   const menuRef = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const { currencies, exchanger } = useSelector(getStore);
@@ -74,7 +75,7 @@ export const ExchangeField: React.FC = ({}) => {
   };
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className={bem.block()}>
       <input
         onChange={onChangeInput}
         onKeyPress={(e) => {
@@ -86,25 +87,29 @@ export const ExchangeField: React.FC = ({}) => {
         placeholder="Введите сумму"
         type="text"
       />
-      <div ref={menuRef}>
+      <div ref={menuRef} className={bem.element("menu")}>
         <Button
           onClick={() => setShowMenu(!showMenu)}
           color="secondary"
-          label={selectedCurrency}
+          label={Object.keys(ISO).find((key) => ISO[key] === selectedCurrency)}
           size="Large"
+          className={bem.element("btn")}
         />
 
         {showMenu && (
-          <ul>
-            {Object.keys(currencies.rates).map((key) => (
-              <li
-                key={key}
-                onClick={() => onClickListItem(key as keyof typeof ISO)}
-              >
-                {ISO[key]}
-              </li>
-            ))}
-          </ul>
+          <div className={bem.element("sort")}>
+            <ul>
+              {Object.keys(currencies.rates).map((key) => (
+                <li
+                  key={key}
+                  onClick={() => onClickListItem(key as keyof typeof ISO)}
+                  className={ISO[key] === selectedCurrency ? "active" : ""}
+                >
+                  {ISO[key]}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>

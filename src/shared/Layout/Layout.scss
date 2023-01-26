@@ -1,7 +1,14 @@
-@import 'style/variables';
+@import "style/variables";
 
 .Layout {
   .HeaderView__logo-image svg {
     width: 20px;
+  }
+  &__content {
+    padding: 80px 20px 0;
+    margin: 0 auto;
+    @include breakpoint($mobile-bp) {
+      padding: 130px 5px 0;
+    }
   }
 }

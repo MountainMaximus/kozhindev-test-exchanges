@@ -2,7 +2,10 @@ import React from "react";
 import Button from "@steroidsjs/core/ui/form/Button/Button";
 import { ExchangeField } from "./ExchangeField";
 
+import "./ExchangeForm.scss";
+import { useBem } from "@steroidsjs/core/hooks";
 export const ExchangeForm: React.FC = ({}) => {
+  const bem = useBem("ExchangeForm");
   const [quantityFields, setQuantityFields] = React.useState(2);
   /**Добавление поля для конвертации */
   const addField = React.useCallback(() => {
@@ -10,10 +13,8 @@ export const ExchangeForm: React.FC = ({}) => {
   }, []);
 
   return (
-    <div style={{ width: 800, margin: "20px auto" }}>
-      <div style={{ textAlign: "center", margin: 20, fontSize: 30 }}>
-        Форма конвертации валют
-      </div>
+    <div className={bem.block()}>
+      <div className={bem.element("title")}>Форма конвертации валют</div>
       {[...new Array(quantityFields)].map((_, index) => (
         <ExchangeField key={index} />
       ))}
@@ -22,6 +23,7 @@ export const ExchangeForm: React.FC = ({}) => {
         label="Добавить еще одну валюту"
         size="Large"
         disabled={quantityFields > 9}
+        className={"mt-2 mx-auto"}
       />
     </div>
   );

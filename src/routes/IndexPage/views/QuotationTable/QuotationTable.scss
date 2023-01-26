@@ -1,0 +1,48 @@
+@import "style/variables";
+
+.QuotationTable {
+  &__title {
+    text-align: center;
+    margin: 20px;
+    font-size: 22px;
+  }
+  &__form {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    height: 50px;
+  }
+  &__form-text {
+    font-size: 18px;
+    margin-right: 10px;
+    line-height: 50px;
+    @include breakpoint($mobile-bp) {
+      font-size: 0;
+    }
+  }
+  &__form-input {
+    position: relative;
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      padding: 12px;
+      width: 200px;
+      border-radius: 10px;
+      font-size: 16px;
+
+      &:focus {
+        border: 1px solid var(--blue);
+      }
+    }
+  }
+  &__table {
+    max-width: 100%;
+    overflow: auto;
+    td {
+      text-align: center;
+    }
+  }
+  &__form {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
