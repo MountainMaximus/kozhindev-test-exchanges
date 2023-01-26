@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
     const date = new Date();
     setDate(date.toLocaleTimeString());
   }, []);
-
+  /**Обработчик запроса актуальных котировок */
   const onClickUpdate = () => {
     dispatch(fetchRates());
     const date = new Date();

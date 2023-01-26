@@ -4,13 +4,16 @@ import { ExchangeField } from "./ExchangeField";
 
 export const ExchangeForm: React.FC = ({}) => {
   const [quantityFields, setQuantityFields] = React.useState(2);
-
-  const addField = React.useCallback(() => {
+  /**Добавление поля для конвертации */
+  const addField = () => {
     if (quantityFields <= 9) setQuantityFields((prev) => prev + 1);
-  }, []);
+  };
 
   return (
-    <div>
+    <div style={{ width: 800, margin: "20px auto" }}>
+      <div style={{ textAlign: "center", margin: 20, fontSize: 30 }}>
+        Форма конвертации валют
+      </div>
       {[...new Array(quantityFields)].map((_, index) => (
         <ExchangeField key={index} />
       ))}

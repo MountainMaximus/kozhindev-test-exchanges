@@ -16,15 +16,15 @@ export interface AxiosAnswer {
   rates: { [index: string]: number };
 }
 
-export enum COLL {
-  NUM = "Номер строки",
-  ISO = "Код валюты",
-  NAME = "Название валюты",
-  RUB = "Курс к Рублю",
-  USD = "Курс к Доллару",
-  EUR = "Курс к Евро",
-  CNY = "Курс к Юаню",
-}
+export const COLL = {
+  NUM: "Номер строки",
+  ISO: "Код валюты",
+  NAME: "Название валюты",
+  RUB: "Курс к Рублю",
+  USD: "Курс к Доллару",
+  EUR: "Курс к Евро",
+  CNY: "Курс к Юаню",
+};
 
 export enum Status {
   LOADING = "loading",
