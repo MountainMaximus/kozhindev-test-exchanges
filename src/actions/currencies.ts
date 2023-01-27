@@ -29,8 +29,6 @@ export const fetchRates = () => async (dispatch) => {
   //   .catch(function (e) {
   //     console.log(e);
   //   });
-  const { data } = await axios.get<AxiosAnswer>(
-    "https://www.cbr-xml-daily.ru/latest.js"
-  );
+  const { data } = await axios.get<AxiosAnswer>("");
   dispatch(setRates(data.rates));
 };
