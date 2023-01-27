@@ -45,4 +45,23 @@
     display: flex;
     justify-content: flex-end;
   }
+  &__preloader {
+    display: flex;
+    justify-content: center;
+    img {
+      display: block;
+      width: 150px;
+      margin-bottom: 20px;
+      animation: k-rotate 4s ease-in-out infinite;
+    }
+    @keyframes k-rotate {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }

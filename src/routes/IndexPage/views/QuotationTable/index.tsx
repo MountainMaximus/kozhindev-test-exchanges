@@ -2,13 +2,13 @@ import { useBem, useSelector } from "@steroidsjs/core/hooks";
 import Button from "@steroidsjs/core/ui/form/Button/Button";
 import React from "react";
 import { getRates } from "reducers/currencies";
-import { COLL, ISO } from "types/type";
+import { COLL, ISO, Status } from "types/type";
 import "./QuotationTable.scss";
 
 export const QuotationTable: React.FC = () => {
   const bem = useBem("QuotationTable");
 
-  const { rates } = useSelector(getRates);
+  const { rates, status } = useSelector(getRates);
   const [searchValue, setSearchValue] = React.useState("");
   const [countRow, setCountRow] = React.useState(5);
   const [sortParams, setSortParams] = React.useState({
@@ -89,41 +89,52 @@ export const QuotationTable: React.FC = () => {
           )}
         </div>
       </div>
-      <div className={bem.element("table")}>
-        <table className="table table-hover table-bordered">
-          <thead>
-            <tr>
-              {Object.entries(COLL).map(([key, value]) => (
-                <th
-                  onClick={() => onClikCollumn(value)}
-                  key={key}
-                  scope="col"
-                  style={{ cursor: `pointer` }}
-                >
-                  {value}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(rates)
-              .slice(0, countRow)
-              .filter(searchCondition)
-              .sort(comparisonCondition)
-              .map((key, index) => (
-                <tr key={key}>
-                  <td>{index + 1}</td>
-                  <td>{key}</td>
-                  <td>{ISO[key]}</td>
-                  <td>{rates[key]}</td>
-                  <td>{rates[key] / rates["USD"]}</td>
-                  <td>{rates[key] / rates["EUR"]}</td>
-                  <td>{rates[key] / rates["CNY"]}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
+      {status === Status.SUCCESS ? (
+        <div className={bem.element("table")}>
+          <table className="table table-hover table-bordered">
+            <thead>
+              <tr>
+                {Object.entries(COLL).map(([key, value]) => (
+                  <th
+                    onClick={() => onClikCollumn(value)}
+                    key={key}
+                    scope="col"
+                    style={{ cursor: `pointer` }}
+                  >
+                    {value}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(rates)
+                .slice(0, countRow)
+                .filter(searchCondition)
+                .sort(comparisonCondition)
+                .map((key, index) => (
+                  <tr key={key}>
+                    <td>{index + 1}</td>
+                    <td>{key}</td>
+                    <td>{ISO[key]}</td>
+                    <td>{rates[key]}</td>
+                    <td>{rates[key] / rates["USD"]}</td>
+                    <td>{rates[key] / rates["EUR"]}</td>
+                    <td>{rates[key] / rates["CNY"]}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <>
+          <div className={bem.element("title")}>
+            Пожалуйста подождите, идет загрузка
+          </div>
+          <div className={bem.element("preloader")}>
+            <img src="/Loading.png" alt="Loading" />
+          </div>
+        </>
+      )}
       <div
         className=" mx-auto"
         style={{ display: "flex", justifyContent: "center" }}

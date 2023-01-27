@@ -9,8 +9,7 @@
     "build": "node webpack production",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy": "gh-pages -d public/frontend",
-    "predeploy": "yarn build"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",

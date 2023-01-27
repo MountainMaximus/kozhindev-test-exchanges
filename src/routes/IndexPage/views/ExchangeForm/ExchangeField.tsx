@@ -6,7 +6,7 @@ import { ISO, pailoadExchange } from "types/type";
 import { useSelector } from "@steroidsjs/core/hooks";
 import Button from "@steroidsjs/core/ui/form/Button/Button";
 import "./ExchangeForm.scss";
-export const ExchangeField: React.FC = ({}) => {
+export const ExchangeField: React.FC<{ index: number }> = ({ index }) => {
   const bem = useBem("ExchangeField");
   const menuRef = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
@@ -29,6 +29,24 @@ export const ExchangeField: React.FC = ({}) => {
     document.body.addEventListener("click", handleClickOutside);
     return () => document.body.removeEventListener("click", handleClickOutside);
   }, []);
+
+  /*Установка параметров из localStorage*/
+  React.useEffect(() => {
+    const data = localStorage.getItem("currencyOfExchange");
+    if (index == 0 && data) {
+      const items = JSON.parse(data);
+
+      if (
+        Object.values(ISO).includes(items.currency) &&
+        typeof items.amount === "number"
+      ) {
+        setSelectedCurrency(items.currency);
+        setInputValue(items.amount);
+        dispatchParametrs(items);
+      }
+    }
+  }, []);
+
   /*Обновление input при изменении курса валют или параметров конвертации */
   React.useEffect(() => {
     const globalCurrency = Object.keys(ISO).find(
@@ -64,8 +82,11 @@ export const ExchangeField: React.FC = ({}) => {
         });
     }
   };
-  /**Отправка параметров в redux */
+  /**Отправка параметров в redux  и localStorage*/
   const dispatchParametrs = ({ currency, amount }: pailoadExchange) => {
+    const json = JSON.stringify({ currency, amount });
+    localStorage.setItem("currencyOfExchange", json);
+
     dispatch(
       setExchangeParameters({
         currency,

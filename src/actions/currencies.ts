@@ -19,18 +19,18 @@ export const fetchRates = () => async (dispatch) => {
     payload: Status.LOADING,
   });
 
-  await fetch("https://www.cbr-xml-daily.ru/latest.js")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      dispatch(setRates(data.rates));
-    })
-    .catch(function (e) {
-      console.log(e);
-    });
-  //   const { data } = await axios.get<AxiosAnswer>(
-  //     "https://www.cbr-xml-daily.ru/latest.js"
-  //   );
-  // dispatch(setRates(data.rates));
+  //  fetch("https://www.cbr-xml-daily.ru/latest.js")
+  //   .then(function (response) {
+  //     return response.json();
+  //   })
+  //   .then(function (data) {
+  //     dispatch(setRates(data.rates));
+  //   })
+  //   .catch(function (e) {
+  //     console.log(e);
+  //   });
+  const { data } = await axios.get<AxiosAnswer>(
+    "https://www.cbr-xml-daily.ru/latest.js"
+  );
+  dispatch(setRates(data.rates));
 };

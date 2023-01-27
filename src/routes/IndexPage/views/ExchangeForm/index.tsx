@@ -16,7 +16,7 @@ export const ExchangeForm: React.FC = ({}) => {
     <div className={bem.block()}>
       <div className={bem.element("title")}>Форма конвертации валют</div>
       {[...new Array(quantityFields)].map((_, index) => (
-        <ExchangeField key={index} />
+        <ExchangeField key={index} index={index} />
       ))}
       <Button
         onClick={addField}
