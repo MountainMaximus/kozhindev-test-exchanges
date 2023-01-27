@@ -37,7 +37,8 @@
   &__table {
     max-width: 100%;
     overflow: auto;
-    td {
+    td,
+    th {
       text-align: center;
     }
   }
