@@ -1,6 +1,6 @@
 ##### Просмотр результата
 
-Сайт находится в режиме реального времени по адресу https://mountainmaximus.github.io/kozhindev-test-exchanges
+Сайт находится в режиме реального времени по адресу https://kozhindev-test-exchanges.surge.sh/
 
 ##### Затраченое время на разработку
 
