@@ -1,0 +1,3 @@
+var link=document.createElement("link");link.rel="stylesheet",link.href="/frontend/bundle-index.87d16411671240a175ba.css",document.getElementsByTagName("head")[0].appendChild(link);
+var script0=document.createElement("script");script0.src="/frontend/bundle-common.87d16411671240a175ba.js",script0.type="text/javascript",script0.async=true,document.getElementsByTagName("body")[0].appendChild(script0);
+var script2=document.createElement("script");script2.src="/frontend/bundle-index.87d16411671240a175ba.js",script2.type="text/javascript",script2.async=true,document.getElementsByTagName("body")[0].appendChild(script2);
