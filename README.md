@@ -1,7 +1,6 @@
 ##### Просмотр результата
 
-Сайт находится в режиме реального времени по адресу https://kozhindev-test-exchanges.surge.sh
-ИЛИ https://kozhindev-test-exchanges-mirror.surge.sh
+Сайт находится в режиме реального времени по адресу https://shortdomain.surge.sh
 
 ##### Затраченое время на разработку
 
